@@ -4,7 +4,7 @@ requireCSS("src/NotFound.css");
 
 let notFoundImage = requireAssetURI("src/notfound404.png");
 
-[@react.component]
+@react.component
 let make = () =>
   <div className="NotFound_container">
     <div className="NotFound_image">

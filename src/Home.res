@@ -1,13 +1,13 @@
 open Utils;
 
-[@bs.get] external location: Dom.window => Dom.location = "location";
-[@bs.get] external pathname: Dom.location => string = "pathname";
-[@bs.get] external search: Dom.location => string = "search";
-[@bs.val] external decodeURIComponent: string => string = "decodeURIComponent";
+@bs.get external location: Dom.window => Dom.location = "location";
+@bs.get external pathname: Dom.location => string = "pathname";
+@bs.get external search: Dom.location => string = "search";
+@bs.val external decodeURIComponent: string => string = "decodeURIComponent";
 
 requireCSS("src/Home.css");
 
-[@react.component]
+@react.component
 let make = () => {
   let query =
     Webapi.Dom.window |> location |> search |> Webapi.Url.URLSearchParams.make;

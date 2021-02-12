@@ -33,11 +33,3 @@ let distanceFromBottom: unit => int =
 
 [@bs.module]
 external registerServiceWorker: unit => unit = "src/registerServiceWorker";
-
-let parseQuery = (q: string) => {
-  let s = q
-  -> Js.String2.replace(_, "?", "")
-  -> Js.String2.split(_, "&")
-
-  Js.log(s)
-}
