@@ -10,13 +10,17 @@ open Utils
 
 requireCSS("src/Home.css")
 
+let clientId = "ff768664c96d04235b1cc4af1e3b37a8"
+
 let getParam = (p: string) => {
   let query = Webapi.Dom.window |> location |> search |> Webapi.Url.URLSearchParams.make
 
   query |> Webapi.Url.URLSearchParams.get(p) |> Belt.Option.getWithDefault(_, "")
 }
 
-let clientId = "ff768664c96d04235b1cc4af1e3b37a8"
+let openVscode = (url: string) => {
+  \"open"(url, "_self")
+}
 
 @react.component
 let make = () => {
@@ -26,15 +30,17 @@ let make = () => {
   let team = getParam("team")
   let scope = getParam("scope")
 
+  let shouldOpenVscode = Js.String.length(code) > 0 && Js.String.length(state) > 0
+  let vscodeUrl = callbackUri ++ "&state=" ++ state ++ "&code=" ++ code
+
   React.useEffect0(() => {
     if Js.String2.length(callbackUri) > 0 {
       setItem("callbackUri", callbackUri)
     }
 
-    if Js.String.length(code) > 0 && Js.String.length(state) > 0 {
-      let task = Js.Global.setTimeout(() => {
-        let url = callbackUri ++ "&state=" ++ state ++ "&code=" ++ code
-        \"open"(url, "_self")
+    if shouldOpenVscode {
+      let vscodeUrl = Js.Global.setTimeout(() => {
+        openVscode(vscodeUrl)
         // clearTimeout(task)
       }, 200)
     }
@@ -71,5 +77,8 @@ let make = () => {
     {hasTeam
       ? <a href={authUrl.contents ++ authQuery} target="_blank"> {React.string("Authorize")} </a>
       : <p> {React.string("Please try again.")} </p>}
+    {shouldOpenVscode
+      ? <button className="open-vscode" onClick={ev => openVscode(vscodeUrl)}> {React.string("Open VS Code")} </button>
+      : React.null}
   </main>
 }
