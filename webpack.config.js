@@ -19,6 +19,7 @@ const useClosureCompiler = process.env.CLOSURE === '1';
 let publicUrl = '';
 
 module.exports = {
+  mode: dev ? 'development' : 'production',
   context: __dirname,
   entry: useRollup ? './lib/es6/src/index' : './lib/js/src/index',
   output: {

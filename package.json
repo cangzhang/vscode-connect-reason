@@ -10,7 +10,7 @@
     "dev": "webpack-dev-server",
     "static": "node scripts/serveStatic.js",
     "bsb-watch": "bsb -make-world -w",
-    "build": "bsb -make-world && webpack  && cp -av public/* dist",
+    "build": "bsb -make-world && NODE_ENV=production webpack && cp -av public/* dist",
     "bsb-build": "bsb -make-world",
     "upload": "./s3_upload.sh",
     "analyze": "NODE_ENV=analyze yarn build; analyze-bundle -b dist/build/main.js -s dist/build/stats.json",
