@@ -1,12 +1,17 @@
-Reason React Hacker News
-===
+# coding-vscode: `connect`
 
-Hacker News mobile app built with [Reason React](https://github.com/reasonml/reason-react)
+> Authorization page for [CODING Merge Requests & Releases](https://marketplace.visualstudio.com/items?itemName=coding-net.coding-plugin).
 
-See it at https://hackernewsmobile.com
+Deployed at https://ftxwn9.coding-pages.com/, synced to [coding/0-al/vscode-connect-reason](https://codingcorp.coding.net/p/0-al/d/vscode-connect-reason/git) automatically.
 
-Source is in [src/](src/), starting from [src/index.re](src/index.re)
+## Development
 
-You can run the app locally with `yarn start`
+```console
+yarn start
+```
 
-Build for deployment with `NODE_ENV=production yarn build`
+## Build
+
+```console
+NODE_ENV=production yarn build
+```
