@@ -1,13 +1,10 @@
 open Utils
 
-@get external location: Dom.window => Dom.location = "location"
-@get external pathname: Dom.location => string = "pathname"
 @get external search: Dom.location => string = "search"
 @val external decodeURIComponent: string => string = "decodeURIComponent"
 
 @val external setTimeout: (unit => unit, int) => Js.Global.timeoutId = "setTimeout"
 @val external clearTimeout: Js.Global.timeoutId => unit = "clearTimeout"
-
 @val external \"open": (string, string) => unit = "open"
 
 requireCSS("src/Home.css")
@@ -15,9 +12,8 @@ requireCSS("src/Home.css")
 let clientId = "ff768664c96d04235b1cc4af1e3b37a8"
 
 let getParam = (p: string) => {
-  let query = Webapi.Dom.window |> location |> search |> Webapi.Url.URLSearchParams.make
-
-  query |> Webapi.Url.URLSearchParams.get(p) |> Belt.Option.getWithDefault(_, "")
+  let q = Webapi.Dom.location -> search -> Webapi.Url.URLSearchParams.make
+  q -> Webapi.Url.URLSearchParams.get(p, _) -> Belt.Option.getWithDefault(_, "")
 }
 
 let getLocalItem = (key: string) =>
@@ -27,9 +23,12 @@ let openVscode = () => {
   let state = getParam("state")
   let code = getParam("code")
   let cbUri = getLocalItem("callbackUri")
-  let url = cbUri ++ "&state=" ++ state ++ "&code=" ++ code
+  let url = j`${cbUri}&state=${state}&code=${code}`
 
-  \"open"(url, "_self")
+  switch Js.String.length(cbUri) {
+  | 0 => ()
+  | _ => \"open"(url, "_self")
+  }
 }
 
 @react.component
