@@ -20,5 +20,3 @@ switch rootDom {
 | None => ()
 | Some(root) => ReactDOM.render(<App />, root)
 }
-
-ReasonReactRouter.push("")

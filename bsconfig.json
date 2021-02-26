@@ -1,13 +1,12 @@
 
 {
-  "name": "reason-react-hacker-news",
+  "name": "coding-vscode-reason",
   "package-specs": ["commonjs", "es6"],
   "reason": {
     "react-jsx": 3
   },
   "bs-dependencies": [
     "@rescript/react",
-    "reason-react",
     "bs-fetch",
     "@glennsl/bs-json",
     "bs-webapi"

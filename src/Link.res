@@ -1,7 +1,7 @@
 let handleClick = (href, event) =>
   if (!ReactEvent.Mouse.defaultPrevented(event)) {
     ReactEvent.Mouse.preventDefault(event);
-    ReasonReactRouter.push(href);
+    RescriptReactRouter.push(href);
   };
 
 @react.component

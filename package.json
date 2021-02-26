@@ -1,7 +1,7 @@
 {
-  "name": "reason-react-hacker-news",
+  "name": "coding-vscode-reason",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -17,7 +17,7 @@
     "clean": "bsb -clean-world"
   },
   "keywords": [],
-  "author": "James Friend and Alain Armand <aarmand.inbox@gmail.com>",
+  "author": "Al Cheung",
   "license": "MIT",
   "dependencies": {
     "@glennsl/bs-json": "5.0.2",
@@ -25,8 +25,7 @@
     "bs-fetch": "0.6.2",
     "bs-webapi": "0.19.1",
     "react": "17.0.1",
-    "react-dom": "17.0.1",
-    "reason-react": "0.9.1"
+    "react-dom": "17.0.1"
   },
   "devDependencies": {
     "bs-platform": "9.0.1",
